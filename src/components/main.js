@@ -43,12 +43,12 @@ const [cityName, setCityName] = useState('')
     );
   };
 
-  // useEffect(()=>{
-  //     if(coordinates.lat.length >0 && coordinates.lon.length >0){
-  // countPollution(coordinates,'72')
-  //     }
-  // },[coordinates])
-  // console.log(coordinates)
+  useEffect(()=>{
+      if(coordinates.lat.length >0 && coordinates.lon.length >0){
+  countPollution(coordinates,'72')
+      }
+  },[coordinates])
+  console.log(coordinates)
 
   return (
     <>

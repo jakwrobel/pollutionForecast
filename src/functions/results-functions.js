@@ -28,11 +28,11 @@ export const slideToNext = (elements, parent) => {
 export const colorFunctions ={
   setaqiColor : value=>{
   if(value<=50) return "#00af50"
-  if (value>50 && value<=100) return "#ffff00"
+  if (value>50 && value<=100) return "#debd43"
   if (value>100 && value<=150) return "#fec100"
   if (value>150 && value<=200) return "#fe0000"
-  if (value>200 && value<=300) return "#7030a1"
-  if (value>300 && value<=500) return "#bf0001"
+  if (value>200 && value<=300) return "#bf0001"
+  if (value>300 && value<=500) return "#581845"
 },
 setpm10Color : value=>{
   if(value<=50) return "#00af50"

@@ -14,7 +14,9 @@ const Results = ({ cityName, coordinates, pollution }) => {
     {cityName &&
     <>
       <h1>{cityName}, {coordinates.country} ({Math.abs(parseFloat(coordinates.lat).toFixed(2))}{coordinates.NorthOrSouth}, {Math.abs(parseFloat(coordinates.lon).toFixed(2))}{coordinates.EastOrWest}) </h1>
-      <h2>Air quality Index</h2>
+      <div className="results__title">
+        <h2>Air quality Index</h2> <img src="./images/info.svg"/>
+        </div>
       <Item itemType="aqi" pollutionHelp={pollution} barvalueScale={5} />
 
       <h2>PM10</h2>
