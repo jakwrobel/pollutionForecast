@@ -1,0 +1,24 @@
+@mixin setFlex($direction,$justify,$align, $wrap:nowrap){
+	display:flex;
+	flex-flow: $direction $wrap;
+	justify-content:$justify;
+	align-items:$align;
+}
+
+@mixin borderRadius ($value1, $value2:$value1){
+	border-top-right-radius: $value1 $value2;
+	border-top-left-radius: $value1 $value2;
+	border-bottom-right-radius: $value1 $value2;
+	border-bottom-left-radius: $value1 $value2;
+}
+
+@mixin keyframes($animationName, $color){
+	@keyframes #{$animationName}{
+	0% {background: linear-gradient(45deg, $c-haiti 0%, $c-minsk 100%);}
+	20% {background: $color;}
+	40% {background: linear-gradient(45deg, $c-haiti 0%, $c-minsk 100%);}
+	60% {background: $color;}
+	80% {background: linear-gradient(45deg, $c-haiti 0%, $c-minsk 100%);}
+	100% {background: $color;}
+}
+}
