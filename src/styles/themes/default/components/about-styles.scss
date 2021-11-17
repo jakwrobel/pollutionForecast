@@ -1,0 +1,17 @@
+.about{
+    &__wrap{
+        width: 100%;
+        height: 53vh;
+        min-height: 41rem;
+        box-sizing: border-box;
+        padding: 6rem 8rem;
+        font-size: 3rem;
+        line-height: 120%;
+        text-align: center;
+
+        article{
+            // height: 100%;
+            // @include setFlex(column, center, center);
+        }
+    }
+}

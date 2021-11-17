@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "./header";
 import Searchbar from "./searchBar";
 import Results from "./results";
+import About from "./about"
 import Footer from "./footer";
 import { getCoordinates } from "../services/geocoding";
 import { getPollution } from "../services/pollution";
@@ -45,18 +46,22 @@ const [cityName, setCityName] = useState('')
     );
   };
 
-  // useEffect(()=>{
-  //     if(coordinates.lat.length >0 && coordinates.lon.length >0){
-  // countPollution(coordinates,'72')
-  //     }
-  // },[coordinates])
+  useEffect(()=>{
+      if(coordinates.lat.length >0 && coordinates.lon.length >0){
+  countPollution(coordinates,'72')
+      }
+  },[coordinates])
   console.log(coordinates)
 
   return (
     <>
       <Header />
       <Searchbar setCoordinates={setCoordinates} />
-      <Results cityName={cityName}  coordinates={coordinates} pollution={pollutionHelp} />
+      { cityName.length>0 ?
+      <Results cityName={cityName}  coordinates={coordinates} pollution={pollution} />
+      :
+      <About/>
+      }
       <Footer />
     </>
   );

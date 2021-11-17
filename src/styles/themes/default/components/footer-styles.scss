@@ -2,8 +2,8 @@
     &__wrap{
         @include setFlex(column, space-evenly, center);
         width: 100%;
-        height: 10rem;
-        min-height: 10vh;
+        height: 10vh;
+        min-height: 7rem;
         box-shadow:  inset 0 10px 10px -10px $c-text-second;
         overflow: visible;
    h2{
