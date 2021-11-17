@@ -6,7 +6,15 @@ $c-text-second: black;
 $c-graph-background: #f4f5f5;
 $c-aqi-1: #00af50;
 
-// backgrounds
+// contents
 // ***********************
 
+$contents: (
+    "aqi": "Think of the AQI as a yardstick that runs from 0 to 500. The higher the AQI value, the greater the level of air pollution and the greater the health concern. AQI values at or below 100 are generally thought of as satisfactory. When AQI values are above 100, air quality is unhealthy.",
+    "pm10": "PM10 is a mixture of particles suspended in the air that do not exceed 10 micrograms in diameter. Here PM10 is displayed in µg/m³ unit. Save level of PM10 is below 50 µg/m³, level higher than 100 µg/m³ can be dangerous",
+    "pm25": "PM2.5 are atmospheric aerosols with a maximum diameter of 2.5 micrometers. This type of suspended particulate matter is considered the most dangerous to human health. It can be responsible for asthma, decreased lung function, lung, throat and laryngeal cancer",
+    "o3": "Ozone occurs both in the Earth's upper atmosphere and at ground level. Ozone can be good or bad, depending on where it is found. Ozone in the air we breathe can harm our health, especially on hot sunny days when ozone can reach unhealthy levels. Safe level of ozone in troposphere is below 55 ppm per hour.",
+    "so2": "Sulfur dioxide (SO2), a colorless, bad-smelling, toxic gas, emitted mostly by the burning of fossil fuels. It can contribute to respiratory illness by making breathing more difficult, especially for children, the elderly, and those with pre-existing conditions. Safe level of SO2 in atmosphere is below 5ppm per hour.",
+    "no2": "Breathing air with a high concentration of NO2 can irritate airways in the human respiratory system. Longer exposures to NO2 may contribute to the development of asthma and potentially increase susceptibility to respiratory infections. Values over 150 ppm of NO2 in the air can be dangerous.",
+    "co": "Breathing air with a high concentration of CO reduces the amount of oxygen that can be transported in the blood stream to critical organs like the heart and brain. A typical concentration of CO in Earth's troposphere is around 100 ppb (parts per billion). Values over 100 ppb are considered to be harmful. ");
 

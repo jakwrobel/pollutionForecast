@@ -8,6 +8,8 @@ import { getCoordinates } from "../services/geocoding";
 import { getPollution } from "../services/pollution";
 import { getCountry } from "../functions/results-functions";
 
+import { pollutionHelp } from "./helpdata";
+
 const key = "AIzaSyDQZ7VhiuFQQD65-kvQMMa_la-oaEBdsXk";
 
 const Main = ({ children }) => {
@@ -43,18 +45,18 @@ const [cityName, setCityName] = useState('')
     );
   };
 
-  useEffect(()=>{
-      if(coordinates.lat.length >0 && coordinates.lon.length >0){
-  countPollution(coordinates,'72')
-      }
-  },[coordinates])
+  // useEffect(()=>{
+  //     if(coordinates.lat.length >0 && coordinates.lon.length >0){
+  // countPollution(coordinates,'72')
+  //     }
+  // },[coordinates])
   console.log(coordinates)
 
   return (
     <>
       <Header />
       <Searchbar setCoordinates={setCoordinates} />
-      <Results cityName={cityName}  coordinates={coordinates} pollution={pollution} />
+      <Results cityName={cityName}  coordinates={coordinates} pollution={pollutionHelp} />
       <Footer />
     </>
   );

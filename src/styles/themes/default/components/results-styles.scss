@@ -1,136 +1,176 @@
-.results{
-    &__wrap{
-        @include setFlex(column, center, center);
-        width: 100%;
-        min-height: 43vh;
+.results {
+  &__wrap {
+    @include setFlex(column, center, center);
+    width: 100%;
+    min-height: 43vh;
 
-        h1{
-            font-size: 4rem;
-            color: $c-text-main;
-        }
+    h1 {
+      font-size: 4rem;
+      color: $c-text-main;
     }
-        &__title{
-         text-align: center;
-            width: 100%;
-            margin: 10rem 0 1rem 0;
-            h2{
-                display: inline;
-                margin: 0;
-                font-size: 2.5rem;
-                color: $c-text-main;
-                text-shadow: 0px 0px 10px $c-text-second;
-                vertical-align: middle;
-            }
-            img{
-                position: relative;
-                left: 5px;
-                width: 2rem;
-                vertical-align: top;
-                transition: 0.1s transform linear;
-
-                &:hover{
-                    cursor: pointer;
-                    transform: scale(1.1);
-                }
-            }
-        }
-}
-
-.item{
-    &__wrap{
-        @include setFlex(row, space-evenly, center);
-        width: 100%;
-        height: 30rem;
+  }
+  &__title {
+    text-align: center;
+    width: 100%;
+    margin: 10rem 0 1rem 0;
+    h2 {
+      display: inline;
+      margin: 0;
+      font-size: 2.5rem;
+      color: $c-text-main;
+      text-shadow: 0px 0px 10px $c-text-second;
+      vertical-align: middle;
     }
-    &__content{
+  }
+  &__info {
+    display: inline-block;
+    position: relative;
+    left: 1rem;
+    bottom: 1rem;
+    vertical-align: top;
+    transition: 0.1s transform linear;
+
+    > img {
+      width: 3rem;
+    }
+
+    &::after {
+        display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.5);
+
+      &::before {
+        content: "Think of the AQI as a yardstick that runs from 0 to 500. The higher the AQI value, the greater the level of air pollution and the greater the health concern. AQI values at or below 100 are generally thought of as satisfactory. When AQI values are above 100, air quality is unhealthy.";
+        position: absolute;
+        left: 9rem;
+        bottom: 10rem;
+        width: 24rem;
+        height: 15rem;
+        z-index: 10;
+        font-size: 1.4rem;
+      }
+
+      &::after {
+        content: "";
         display: inline-block;
-        width: 80%;
-        height: 100%;
-        position: relative;
-        white-space: nowrap;
-        overflow: hidden;
-        // border: 5px solid black;
-        border-radius: 10px;
-        background-color: transparent;
+        position: absolute;
+        bottom: -1rem;
+        left: 4rem;
+        background-image: url("../../../images/cloud2.svg");
+        width: 35rem;
+        height: 35rem;
+        background-size: 35rem 35rem;
+        color: black;
+        font-size: 1.2rem;
+      }
     }
-    &__arrow{
-        display: inline-block;
-        height: 5em;
-
-        img{
-            width: 100%;
-            height: 100%;
-            transition: transform 0.2s linear;
-
-            &:hover{
-                cursor: pointer;
-                transform: scale(1.2);
-            }
-        }
-    }
+  }
+  @include createInfoClasses($contents);
 }
 
-.aqi{
-    &__wrap{
-        left: 0;
-        position: relative;
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 10rem;
-        height: 100%;
-        background-color: transparent;
-        transition: 0.2s left ease-in-out;
+.item {
+  &__wrap {
+    @include setFlex(row, space-evenly, center);
+    width: 100%;
+    height: 30rem;
+  }
+  &__content {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    // border: 5px solid black;
+    border-radius: 10px;
+    background-color: transparent;
+  }
+  &__arrow {
+    display: inline-block;
+    height: 5em;
+
+    img {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.2s linear;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+      }
     }
-    &__value{
-        height: 20%;
-        width: 100%;
-        text-align: center;
-        font-size: 1.8rem;
-        font-weight: 600;
-    }
-    &__content{
-        @include setFlex(row,center,flex-end);
-        height: 50%;
-    }
-    &__bar{
-        width: 3rem;
-        max-height: 100%;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-    &__day{
-        @include setFlex(row,center,center);
-        height: 10%;
-        font-weight: 400;
-        font-size: 1.6rem;
-    }
-    &__time{
-        @include setFlex(row,center,center);
-        height: 10%;
-        font-weight: 600;
-        font-size: 2rem;
-    }
+  }
 }
 
-.pm10, .pm25, .o3, .so2, .no2, .co{
-    &__wrap{
-     @extend .aqi__wrap;
-    }
-    &__value{
-        @extend .aqi__value;
-    }
-    &__content{
-        @extend .aqi__content;
-    }
-    &__bar{
-        @extend .aqi__bar;
-    }
-    &__day{
-        @extend .aqi__day;
-    }
-    &__time{
-        @extend .aqi__time;
-    }
+.aqi {
+  &__wrap {
+    left: 0;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 10rem;
+    height: 100%;
+    background-color: transparent;
+    transition: 0.2s left ease-in-out;
+  }
+  &__value {
+    height: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  &__content {
+    @include setFlex(row, center, flex-end);
+    height: 50%;
+  }
+  &__bar {
+    width: 3rem;
+    max-height: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  &__day {
+    @include setFlex(row, center, center);
+    height: 10%;
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+  &__time {
+    @include setFlex(row, center, center);
+    height: 10%;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}
+
+.pm10,
+.pm25,
+.o3,
+.so2,
+.no2,
+.co {
+  &__wrap {
+    @extend .aqi__wrap;
+  }
+  &__value {
+    @extend .aqi__value;
+  }
+  &__content {
+    @extend .aqi__content;
+  }
+  &__bar {
+    @extend .aqi__bar;
+  }
+  &__day {
+    @extend .aqi__day;
+  }
+  &__time {
+    @extend .aqi__time;
+  }
 }
