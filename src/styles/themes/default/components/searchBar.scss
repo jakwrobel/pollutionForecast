@@ -1,49 +1,89 @@
-.searchBar{
-    &__wrap{
-        @include setFlex(column, center, center);
-        width: 100%;
-        height: 22vh;
-        min-height: 14rem;
-        color: $c-text-main;
-        text-shadow: 0px 0px 10px $c-text-second;
+.searchBar {
+  &__wrap {
+    @include setFlex(column, center, center);
+    width: 100%;
+    height: 22vh;
+    min-height: 14rem;
+    background: linear-gradient(180deg, $c-bckg-second 0%, $c-bckg-main 100%);
+    color: $c-text-main;
+    text-shadow: 0px 0px 10px $c-text-second;
 
-        h2{
-            margin: 1rem 0 2rem 0;
-            font-size: 3.5rem;
-        }
+    h2 {
+      margin: 1rem 0 2rem 0;
+      font-size: 3.5rem;
+    }
+  }
+
+  &__form {
+    @include setFlex(column, space-around, center);
+    width: 100%;
+    height: 10rem;
+    color: white;
+
+    input[type="text"] {
+      width: 50%;
+      height: 3rem;
+      margin: 1rem 0;
+      background-color: white;
+      font-size: 1.8rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    //   box-shadow: 0px 0px 10px $c-text-second,
+    //     inset 0 -10px 10px -10px $c-text-second;
     }
 
-    &__form{
-        @include setFlex(column, space-around, center);
-        width: 100%;
-        height: 10rem;
-        color: white;
+    button {
+      background-color: white;
+      width: 15%;
+      min-width: 5rem;
+      height: 3rem;
+      border: none;
+      border-radius: 8px;
+      transition: 0.1s transform linear;
+    //   box-shadow: 0px 0px 10px $c-text-second,
+    //     inset 0 -10px 10px -10px $c-text-second;
+      font-weight: 600;
 
-        input[type="text"]{
-            width: 50%;
-            height: 2.5rem;
-            background-color: white;
-            font-weight: 600;
-        border: none;
-            border-radius: 3px;
-            outline: none;
-            box-shadow: 0px 0px 10px $c-text-second, inset 0 -10px 10px -10px $c-text-second;
-        }
-        
-        button{
-            background-color: white;
-            width: 15%;
-            height: 2.5rem;
-            border: none;
-            border-radius: 5px;
-            transition:  0.1s transform linear;
-            box-shadow: 0px 0px 10px $c-text-second, inset 0 -10px 10px -10px $c-text-second;
-            font-weight: 600;
-
-            &:hover{
-                cursor: pointer;
-                transform: scale(1.1);
-            }
-        }
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
     }
+  }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .searchBar {
+      &__wrap {
+        h2 {
+          margin: 1rem 0 0;
+          font-size: 2.8rem;
+        }
+      }
+    }
+  }
+
+@media only screen and (max-width: 768px) {
+    .searchBar {
+      &__wrap {
+        h2 {
+          margin: 2rem 0 0;
+        }
+      }
+    }
+  }
+
+@media only screen and (max-width: 480px) {
+  .searchBar {
+    &__wrap {
+        min-height: 12rem;
+      h2 {
+        margin: 1.5rem 0 0;
+        font-size: 2.5rem;
+      }
+    }
+  }
 }

@@ -1,7 +1,7 @@
 .app{
     &__wrapper{
         @include setFlex(column, space-between, center);
-        background: url('../../../images/background.jpg');
+        background-color: $c-bckg-main;
         background-size: cover;
         min-height: 100vh;
     }

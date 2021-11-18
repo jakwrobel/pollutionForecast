@@ -1,28 +1,60 @@
-.header{
-    &__wrap{
-        @include setFlex(row, center, center);
-        width: 100%;
-        height: 15vh;
-        min-height: 9rem;
-        color: $c-text-main;
-        box-shadow: 0px 0px 10px $c-text-second, inset 0 -10px 10px -10px $c-text-second;
-        font-weight: 600;
-        text-shadow: 0px 0px 10px $c-text-second;
+.header {
+  &__wrap {
+    @include setFlex(row, center, center);
+    width: 100%;
+    height: 15vh;
+    min-height: 9rem;
+    color: $c-text-main;
+    // box-shadow: 0px 0px 10px $c-text-second,
+    // inset 0 -10px 10px -10px $c-text-second;
+    font-weight: 600;
+    // text-shadow: 0px 0px 10px $c-text-second;
+    background-color: $c-bckg-second;
 
-        img{
-            height: 70%;
-            margin-right: 4rem;
+    img {
+      height: 70%;
+      margin-right: 4rem;
+    }
+
+    h1 {
+      font-size: 6rem;
+      text-align: center;
+      margin: 1rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+      &__wrap {
+          min-height: 8rem;
+        h1 {
+          font-size: 4.5rem;
         }
+  
+        img{
+          height: 70%;
+        }
+      }
+    }
+  }
 
-    h1{
-        font-size: 6rem;
-        text-align: center;
-        margin: 1rem;
-    }
+@media only screen and (max-width: 480px) {
+  .header {
+    &__wrap {
+        min-height: 7rem;
+      h1 {
+        font-size: 3.5rem;
+      }
 
-    h2{
-        font-size: 3rem;
-        margin: 1rem;
+      img{
+        height: 65%;
+      }
     }
-    }
+  }
 }
