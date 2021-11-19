@@ -8,6 +8,7 @@
       font-size: 4rem;
       text-align: center;
       color: $c-text-main;
+      text-shadow: 0px 0px 10px $c-text-second;
     }
   }
   &__title {
@@ -36,22 +37,22 @@
     }
 
     &::after {
-        display: none;
+      display: none;
     }
 
     &:hover {
       cursor: pointer;
-      transform: scale(1.5);
+      transform: scale(1.2);
 
       &::before {
-        content: "Think of the AQI as a yardstick that runs from 0 to 500. The higher the AQI value, the greater the level of air pollution and the greater the health concern. AQI values at or below 100 are generally thought of as satisfactory. When AQI values are above 100, air quality is unhealthy.";
+        content: "";
         position: absolute;
         left: 9rem;
-        bottom: 10rem;
-        width: 24rem;
+        bottom:7rem;
+        width: 21rem;
         height: 15rem;
         z-index: 10;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
 
       &::after {
@@ -60,10 +61,10 @@
         position: absolute;
         bottom: -1rem;
         left: 4rem;
-        background-image: url("../../../images/cloud2.svg");
-        width: 35rem;
-        height: 35rem;
-        background-size: 35rem 35rem;
+        background-image: url("../../../images/cloud.svg");
+        width: 31rem;
+        height: 31rem;
+        background-size: 31rem 31rem;
         color: black;
         font-size: 1.2rem;
       }
@@ -85,9 +86,8 @@
     position: relative;
     white-space: nowrap;
     overflow: hidden;
-    // border: 5px solid black;
     border-radius: 10px;
-    background-color: transparent;
+    box-shadow: 0 0 10px $c-bckg-second;
   }
   &__arrow {
     display: inline-block;
@@ -129,6 +129,9 @@
   &__content {
     @include setFlex(row, center, flex-end);
     height: 50%;
+    background-color: $c-bckg-second;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
   }
   &__bar {
     width: 3rem;
@@ -173,5 +176,103 @@
   }
   &__time {
     @extend .aqi__time;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .results {
+    &__info {
+      &:hover {
+        &::before {
+          left: -26rem;
+        }
+        &::after {
+          position: absolute;
+          left: 0rem;
+          transform: translate(-100%) scaleX(-1);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .results {
+    &__info {
+      &:hover {
+        &::before {
+          width: 21rem;
+          height: 15rem;
+          left: -11.5rem;
+          bottom: 5.5rem;
+          font-size: 1.2rem;
+        }
+        &::after {
+          position: absolute;
+          left: 13rem;
+          bottom: 1rem;
+          background-image: url("../../../images/cloud2.svg");
+          width: 29rem;
+          height: 29rem;
+          background-size: 29rem 29rem;
+          transform: translate(-100%) scaleX(-1);
+        }
+      }
+    }
+    
+  }
+
+  .item {
+    &__wrap {
+      height: 26rem;
+    }
+  }
+
+  .aqi {
+    &__wrap {
+      width: 8.5rem;
+    }
+
+    &__time {
+      font-size: 1.8rem;
+    }
+
+    &__day {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .results {
+    &__wrap {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .item {
+    &__wrap {
+      height: 22rem;
+    }
+
+    &__arrow {
+      height: 4rem;
+    }
+  }
+
+  .aqi {
+    &__wrap {
+      width: 7rem;
+    }
+
+    &__time {
+      font-size: 1.6rem;
+    }
+
+    &__day {
+      font-size: 1.2rem;
+    }
   }
 }

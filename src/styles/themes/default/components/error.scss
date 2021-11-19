@@ -1,0 +1,18 @@
+.error {
+  &__wrap {
+      @extend .about__wrap;
+      color: $c-error;
+      font-size: 4rem;
+  }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .error {
+    &__wrap {
+      @include setFlex(column, center, center);
+      
+    }
+  }
+}
