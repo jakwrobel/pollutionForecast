@@ -30,8 +30,6 @@
       border: none;
       border-radius: 8px;
       outline: none;
-    //   box-shadow: 0px 0px 10px $c-text-second,
-    //     inset 0 -10px 10px -10px $c-text-second;
     }
 
     button {
@@ -42,8 +40,6 @@
       border: none;
       border-radius: 8px;
       transition: 0.1s transform linear;
-    //   box-shadow: 0px 0px 10px $c-text-second,
-    //     inset 0 -10px 10px -10px $c-text-second;
       font-weight: 600;
 
       &:hover {
