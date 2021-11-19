@@ -1,19 +1,19 @@
-@mixin setFlex($direction,$justify,$align, $wrap:nowrap){
-	display:flex;
-	flex-flow: $direction $wrap;
-	justify-content:$justify;
-	align-items:$align;
+@mixin setFlex($direction, $justify, $align, $wrap: nowrap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $align;
 }
 
-@mixin createInfoClasses ($contents){
-	@each $name, $content in $contents{
-		&__info-#{$name} {
-			@extend .results__info;
-			&:hover{
-				&::before{
-					content: $content;
-				}
-			}
-		}
-	  }
+@mixin createInfoClasses($contents) {
+  @each $name, $content in $contents {
+    &__info-#{$name} {
+      @extend .results__info;
+      &:hover {
+        &::before {
+          content: $content;
+        }
+      }
+    }
+  }
 }
