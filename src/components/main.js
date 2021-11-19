@@ -9,13 +9,14 @@ import Footer from "./footer";
 import { getCoordinates } from "../services/geocoding";
 import { getPollution } from "../services/pollution";
 import { getCountry } from "../functions/results-functions";
-
 import { pollutionHelp } from "./helpdata";
 
 const key = "AIzaSyDQZ7VhiuFQQD65-kvQMMa_la-oaEBdsXk";
 
 const Main = ({ children }) => {
-  const [doesCityExist, setCityExistence] = useState(false);
+
+  const[isLoading,setLoading]=useState(true);
+  const [doesCityExist, setCityExistence] = useState(true);
   const [enteredName, setEnteredName] = useState("");
 
   const [coordinates, changeCoordinates] = useState({
@@ -36,6 +37,7 @@ const Main = ({ children }) => {
         if (typeof res.length == "undefined") {
           setCityExistence(false);
         } else {
+          setLoading(true)
           setCityExistence(true);
           changeCoordinates((prevCoordinates) => ({
             ...prevCoordinates,
@@ -44,7 +46,8 @@ const Main = ({ children }) => {
             NorthOrSouth: parseFloat(res[0].lat) > 0 ? "N" : "S",
             EastOrWest: parseFloat(res[0].lon) > 0 ? "E" : "W",
             country: getCountry(res[0].display_name),
-          }));
+          }))
+          setLoading(false)
         }
       })
       .catch((error) => {
@@ -53,7 +56,7 @@ const Main = ({ children }) => {
   };
 
   const countPollution = (coordinates, hours) => {
-    getPollution(coordinates, hours).then((res) =>
+    getPollution(coordinates, hours, 1).then((res) =>
       setPollution((prevPollution) => [...res.data.data])
     );
   };

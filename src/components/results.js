@@ -11,6 +11,7 @@ const Results = ({ cityName, coordinates, pollution }) => {
 
   return (
     <div className="results__wrap">
+      
     {cityName &&
     <>
       <h1>{cityName}, {coordinates.country} ({Math.abs(parseFloat(coordinates.lat).toFixed(2))}{coordinates.NorthOrSouth}, {Math.abs(parseFloat(coordinates.lon).toFixed(2))}{coordinates.EastOrWest}) </h1>

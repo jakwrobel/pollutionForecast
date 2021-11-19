@@ -8,7 +8,7 @@ export const getCoordinates = (event,cityName)=>{
         params: {q: cityName, 'accept-language': 'en', polygon_threshold: '0.0'},
         headers: {
           'x-rapidapi-host': 'forward-reverse-geocoding.p.rapidapi.com',
-          'x-rapidapi-key': '50bf83cea7msh256e50596707c81p1bda08jsnfa836124e987'
+          'x-rapidapi-key': 'dd31c8c14cmsh2ab1c44907f3c88p1bcb1cjsnd1b772d2c469'
         }
       };  
       
