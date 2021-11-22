@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import Header from "./header";
 import Searchbar from "./searchBar";
 import Results from "./results";
@@ -9,25 +8,22 @@ import Footer from "./footer";
 import { getCoordinates } from "../services/geocoding";
 import { getPollution, keys } from "../services/pollution";
 import { getCountry } from "../functions/results-functions";
-// import { pollutionHelp } from "./helpdata";
 
-const Main = ({ children }) => {
-  const [enteredName, setEnteredName] = useState("");
+import actions from "../redux/actions";
+import axios from "axios";
+import { connect } from "react-redux";
 
-  const [coordinates, changeCoordinates] = useState({
-    lat: "",
-    lon: "",
-    NorthOrSouth: "",
-    EastOrWest: "",
-    country: "",
-  });
-
-  const [pollution, setPollution] = useState([]);
-
-  const [errorMessage, setErrorMessage] = useState({
-    type:'',
-    message:''
-  });
+const AppLogic = ({
+  location,
+  pollution,
+  error,
+  setEnteredName,
+  changeCoordinates,
+  setPollution,
+  setError,
+  resetError,
+}) => {
+  console.log(actions);
 
   const setCoordinates = (event, enteredName) => {
     setEnteredName(enteredName);
@@ -35,17 +31,10 @@ const Main = ({ children }) => {
       .then((response) => response.data)
       .then((res) => {
         if (typeof res.length == "undefined") {
-          setErrorMessage(prev=>({...prev, type:'content', message:'City does not exist'}));
+          setError("content", "City does not exist");
         } else {
-          setErrorMessage(prev=>({...prev, type:'', message:''}));
-          changeCoordinates((prevCoordinates) => ({
-            ...prevCoordinates,
-            lat: res[0].lat,
-            lon: res[0].lon,
-            NorthOrSouth: parseFloat(res[0].lat) > 0 ? "N" : "S",
-            EastOrWest: parseFloat(res[0].lon) > 0 ? "E" : "W",
-            country: getCountry(res[0].display_name),
-          }));
+          resetError();
+          changeCoordinates(res[0], getCountry);
         }
       })
       .catch((error) => {
@@ -55,8 +44,9 @@ const Main = ({ children }) => {
               "Error while connecting to forecast API. More info: ",
               error.response
             );
-            setErrorMessage(prev=>({...prev, type:'connection', message:
-              "Too many requests. You can do up to 4 requests per second"})
+            setError(
+              "connection",
+              "Too many requests. You can do up to 4 requests per second"
             );
             break;
           case error.response.status >= 300 && error.response.status < 400:
@@ -64,7 +54,7 @@ const Main = ({ children }) => {
               "Error while connecting to geocoding API. More info: ",
               error.response
             );
-            setErrorMessage(prev=>({...prev, type:'connection', message:"Page has been redirected"}));
+            setError("connection", "Page has been redirected");
             break;
           case error.response.status >= 400 &&
             error.response.status != 429 &&
@@ -73,31 +63,29 @@ const Main = ({ children }) => {
               "Error while connecting to geocoding API. More info: ",
               error.response
             );
-            setErrorMessage(prev=>({...prev, type:'connection', message:"Client error has occured"}));
+            setError("connection", "Client error has occured");
             break;
           case error.response.status >= 500:
             console.log(
               "Error while connecting to geocoding API. More info: ",
               error.response
             );
-            setErrorMessage(prev=>({...prev, type:'connection', message:
-              "Server error has occured. Try again later"})
-            );
+            setError("connection", "Server error has occured. Try again later");
             break;
           default:
-            setErrorMessage(prev=>({...prev, type:'connection', message:
-              "Undefined error has occured. Try again later."})
+            setError(
+              "connection",
+              "Undefined error has occured. Try again later."
             );
         }
       });
   };
 
   const countPollution = (coordinates, hours, apiKeyNumber) => {
-    console.log(apiKeyNumber);
     getPollution(coordinates, hours, apiKeyNumber)
       .then((res) => {
-        setPollution((prevPollution) => [...res.data.data]);
-        setErrorMessage(prev=>({...prev, type:'', message:""}));
+        setPollution(res.data.data);
+        resetError();
       })
       .catch((error) => {
         switch (true) {
@@ -110,8 +98,9 @@ const Main = ({ children }) => {
                 "Error while connecting to forecast API. More info: ",
                 error.response
               );
-              setErrorMessage(prev=>({...prev, type:'connection', message:
-                "Because of data provider's requests limit, getting and displaying more data is currently not available. Try again after 24 hours."})
+              setError(
+                "connection",
+                "Because of data provider's requests limit, getting and displaying more data is currently not available. Try again after 24 hours."
               );
             }
             break;
@@ -120,7 +109,7 @@ const Main = ({ children }) => {
               "Error while connecting to forecast API. More info: ",
               error.response
             );
-            setErrorMessage(prev=>({...prev, type:'connection', message:"Page has been redirected"}));
+            setError("connection", "Page has been redirected");
             break;
           case error.response.status >= 400 &&
             error.response.status != 429 &&
@@ -129,20 +118,19 @@ const Main = ({ children }) => {
               "Error while connecting to forecast API. More info: ",
               error.response
             );
-            setErrorMessage(prev=>({...prev, type:'connection', message:"Client error has occured"}));
+            setError("connection", "Client error has occured");
             break;
           case error.response.status >= 500:
             console.log(
               "Error while connecting to forecast API. More info: ",
               error.response
             );
-            setErrorMessage(prev=>({...prev, type:'connection', message:
-              "Server error has occured. Try again later"})
-            );
+            setError("connection", "Server error has occured. Try again later");
             break;
           default:
-            setErrorMessage(prev=>({...prev, type:'connection', message:
-              "Undefined error has occured. Try again later."})
+            setError(
+              "connection",
+              "Undefined error has occured. Try again later."
             );
         }
       });
@@ -150,29 +138,34 @@ const Main = ({ children }) => {
 
   let content = "";
 
-  if (enteredName.length > 0) {
-      if (errorMessage.type.length > 0) {
-        content = <Error type={errorMessage.type} message= {errorMessage.message} cityName={enteredName} />;
-      } else {
-        content = (
-          <Results
-            cityName={enteredName}
-            coordinates={coordinates}
-            pollution={pollution}
-          />
-        );
-      }
+  if (location.enteredName.length > 0) {
+    if (error.errorType.length > 0) {
+      content = (
+        <Error
+          type={error.errorType}
+          message={error.errorMessage}
+          cityName={location.enteredName}
+        />
+      );
+    } else {
+      content = (
+        <Results
+          cityName={location.enteredName}
+          coordinates={location}
+          pollution={pollution}
+        />
+      );
+    }
   } else {
     content = <About />;
   }
 
   useEffect(() => {
-    if (coordinates.lat.length > 0 && coordinates.lon.length > 0) {
-      countPollution(coordinates, "72", 0);
+    if (location.lat.length > 0 && location.lon.length > 0) {
+      countPollution(location, "72", 0);
     }
-  }, [coordinates]);
-  console.log(coordinates);
-
+  }, [location]);
+  console.log(error);
   return (
     <>
       <Header />
@@ -183,4 +176,21 @@ const Main = ({ children }) => {
   );
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setEnteredName: (enteredName) =>
+      dispatch(actions.setEnteredName(enteredName)),
+    changeCoordinates: (res, func) =>
+      dispatch(actions.changeCoordinates(res, func)),
+    setPollution: (data) => dispatch(actions.setPollution(data)),
+    setError: (errorType, errorMessage) =>
+      dispatch(actions.setError(errorType, errorMessage)),
+    resetError: () => dispatch(actions.resetError()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppLogic);
