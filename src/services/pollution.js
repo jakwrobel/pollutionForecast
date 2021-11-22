@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//API keys:
 export const keys = [
   "50bf83cea7msh256e50596707c81p1bda08jsnfa836124e987",
   "8cb705c6cfmsh0a3c87eb6ca9cf5p14a1a7jsn92aa1ee82eab",
@@ -7,8 +8,10 @@ export const keys = [
   "edabb595a8mshc8280ddb349e608p156bb9jsn8072ab5b0200",
 ];
 
+
+//Makes API call and returns promise:
 export const getPollution = (coordinates, hours, keyNumber) => {
-  var options = {
+  const options = {
     method: "GET",
     url: "https://air-quality.p.rapidapi.com/forecast/airquality",
     params: { lat: coordinates.lat, lon: coordinates.lon, hours: hours },

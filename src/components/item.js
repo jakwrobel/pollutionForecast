@@ -1,3 +1,4 @@
+//Renders one pollution section  
 import React from "react";
 import LeftArrow from "./leftArrow";
 import RightArrow from "./rightArrow";

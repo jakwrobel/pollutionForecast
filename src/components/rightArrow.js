@@ -1,9 +1,9 @@
-import simplearrow from '../simplearrow.svg'
+//Renders right arrow in Item component
 
-const RightArrow = ({onClickFunction}) => {
+const RightArrow = ({ onClickFunction }) => {
   return (
     <div onClick={onClickFunction} className="item__arrow">
-      <img src="./images/arrowRight.svg"/>
+      <img src="./images/arrowRight.svg" alt="backward" />
     </div>
   );
 };

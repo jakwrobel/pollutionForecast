@@ -1,3 +1,4 @@
+//Renders section with search bar
 import React, { useRef } from "react";
 
 const SearchBar = ({ setCoordinates }) => {

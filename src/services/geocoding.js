@@ -1,7 +1,8 @@
 import axios from "axios";
 
+//Makes API call and returns promise:
 export const getCoordinates = (event, cityName) => {
-  let options2 = {
+  let options = {
     method: "GET",
     url: "https://forward-reverse-geocoding.p.rapidapi.com/v1/search",
     params: { q: cityName, "accept-language": "en", polygon_threshold: "0.0" },
@@ -12,5 +13,5 @@ export const getCoordinates = (event, cityName) => {
   };
 
   event.preventDefault();
-  return axios.request(options2);
+  return axios.request(options);
 };

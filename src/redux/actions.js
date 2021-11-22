@@ -1,3 +1,4 @@
+//Actions used as dispatch argument in app (used in AppLogic component)
 const setEnteredName = (enteredName) => {
   return {
     type: "SET_ENTERED_NAME",
@@ -37,9 +38,9 @@ const resetError = () => {
 };
 
 export default {
-    setEnteredName,
-    changeCoordinates,
-    setPollution,
-    setError,
-    resetError
-}
+  setEnteredName,
+  changeCoordinates,
+  setPollution,
+  setError,
+  resetError
+};
