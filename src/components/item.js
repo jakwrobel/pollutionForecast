@@ -1,3 +1,4 @@
+//Renders one pollution section  
 import React from "react";
 import LeftArrow from "./leftArrow";
 import RightArrow from "./rightArrow";
@@ -9,7 +10,7 @@ import {
   getTime,
 } from "../functions/results-functions";
 
-const Item = ({ itemType, pollutionHelp, barvalueScale }) => {
+const Item = ({ itemType, pollution, barvalueScale }) => {
   return (
     <div className="item__wrap">
       <LeftArrow
@@ -18,7 +19,7 @@ const Item = ({ itemType, pollutionHelp, barvalueScale }) => {
         }
       />
       <div className="item__content">
-        {pollutionHelp.map((element) => (
+        {pollution.map((element) => (
           <div className={`${itemType}__wrap`}>
             <div
               className={`${itemType}__value`}
