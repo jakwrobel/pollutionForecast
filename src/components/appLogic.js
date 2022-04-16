@@ -102,7 +102,7 @@ const AppLogic = ({
       .catch((error) => {
         switch (true) {
           case error.response.status === 429:
-            //Here is interesting part. When error response from API is 429, and we still have new API keys in array of API keys,
+            //If error response from API is 429, and we still have new API keys in array of API keys,
             //function calls itself recursively with another API key as argument.
             //Recursion stops when we don't have any new keys which doesn't cause 429 error
             //I wrote it because of data provider's limits of daily API calls.
