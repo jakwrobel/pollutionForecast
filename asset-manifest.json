@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pollutionForecast/static/css/main.7d2c2fd2.chunk.css",
-    "main.js": "/pollutionForecast/static/js/main.725a9455.chunk.js",
-    "main.js.map": "/pollutionForecast/static/js/main.725a9455.chunk.js.map",
+    "main.js": "/pollutionForecast/static/js/main.b8a4b543.chunk.js",
+    "main.js.map": "/pollutionForecast/static/js/main.b8a4b543.chunk.js.map",
     "runtime-main.js": "/pollutionForecast/static/js/runtime-main.c8ef483d.js",
     "runtime-main.js.map": "/pollutionForecast/static/js/runtime-main.c8ef483d.js.map",
     "static/js/2.a4496cbe.chunk.js": "/pollutionForecast/static/js/2.a4496cbe.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.c8ef483d.js",
     "static/js/2.a4496cbe.chunk.js",
     "static/css/main.7d2c2fd2.chunk.css",
-    "static/js/main.725a9455.chunk.js"
+    "static/js/main.b8a4b543.chunk.js"
   ]
 }
