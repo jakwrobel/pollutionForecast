@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/pollutionForecast/static/css/main.66a56e86.chunk.css",
-    "main.js": "/pollutionForecast/static/js/main.c093afb4.chunk.js",
-    "main.js.map": "/pollutionForecast/static/js/main.c093afb4.chunk.js.map",
+    "main.css": "/pollutionForecast/static/css/main.7d2c2fd2.chunk.css",
+    "main.js": "/pollutionForecast/static/js/main.bd67e341.chunk.js",
+    "main.js.map": "/pollutionForecast/static/js/main.bd67e341.chunk.js.map",
     "runtime-main.js": "/pollutionForecast/static/js/runtime-main.c8ef483d.js",
     "runtime-main.js.map": "/pollutionForecast/static/js/runtime-main.c8ef483d.js.map",
     "static/js/2.a4496cbe.chunk.js": "/pollutionForecast/static/js/2.a4496cbe.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.7a046a25.chunk.js": "/pollutionForecast/static/js/3.7a046a25.chunk.js",
     "static/js/3.7a046a25.chunk.js.map": "/pollutionForecast/static/js/3.7a046a25.chunk.js.map",
     "index.html": "/pollutionForecast/index.html",
-    "static/css/main.66a56e86.chunk.css.map": "/pollutionForecast/static/css/main.66a56e86.chunk.css.map",
+    "static/css/main.7d2c2fd2.chunk.css.map": "/pollutionForecast/static/css/main.7d2c2fd2.chunk.css.map",
     "static/js/2.a4496cbe.chunk.js.LICENSE.txt": "/pollutionForecast/static/js/2.a4496cbe.chunk.js.LICENSE.txt",
     "static/media/theme.scss": "/pollutionForecast/static/media/cloud2.25b427a2.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c8ef483d.js",
     "static/js/2.a4496cbe.chunk.js",
-    "static/css/main.66a56e86.chunk.css",
-    "static/js/main.c093afb4.chunk.js"
+    "static/css/main.7d2c2fd2.chunk.css",
+    "static/js/main.bd67e341.chunk.js"
   ]
 }
